@@ -202,7 +202,7 @@ a.card:hover h3 { text-decoration: underline; }
 .count { font-size: 15px; color: var(--muted); }
 .count strong { color: var(--forest-dark); }
 .product-grid { display: grid; gap: 24px; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
-.product-grid .card-img { height: 240px; background: #fff; }
+.product-grid .card-img { height: auto; aspect-ratio: 6 / 7; background: var(--sand); }
 .product-grid .card-img img { object-fit: cover; object-position: center; }
 .product-grid .card-body { padding: 16px 18px 18px; gap: 4px; }
 .product-grid .card-body h3 { font-size: 19px; }

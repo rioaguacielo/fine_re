@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}{{ case.title }} | 납품사례 | {% endblock %}
+{% block main %}
+<section class="page-head"><div class="inner">
+  <div class="crumb"><a href="{{ base }}/">홈</a> › <a href="{{ base }}/cases/">납품사례</a></div>
+  <h1>{{ case.title }}</h1>
+  <p>{{ case.client_type }}{% if case.year %} · {{ case.year }}{% endif %}{% if case.products %} · {{ case.products }}{% endif %}</p>
+</div></section>
+<section class="section">
+  <div class="inner prose">
+    {% if case.image and case.image not in case.html %}<img src="{{ case.image }}" alt="{{ case.title }} 현장 사진" style="border-radius:12px;margin-bottom:32px" />{% endif %}
+    {{ case.html|safe }}
+    <p style="margin-top:48px"><a class="btn btn-line" href="{{ base }}/cases/">목록으로</a></p>
+  </div>
+</section>
+{% endblock %}

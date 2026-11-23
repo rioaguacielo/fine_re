@@ -1,0 +1,37 @@
+# 사이트 설정 — 이 파일만 고치면 메뉴와 제품 분류가 바뀝니다.
+title: (주)파인가든
+brand: finegarden
+description: 목재간판·우드사인·식물라벨 전문기업 파인가든. 식물원·수목원·공공기관 안내판을 디자인부터 제작, 시공까지.
+# 정식 오픈 전에는 true (상단 '리뉴얼 시안' 안내 표시, 검색엔진 차단)
+draft: true
+# GitHub Pages 주소의 하위 경로. 자체 도메인(finegarden.net)으로 옮기면 "" 로 바꿉니다.
+baseurl: /fine_re
+
+company:
+  ceo: 박웅준
+  bizno: 215-87-62929
+  address: 서울시 송파구 송파대로 106-7
+  directions: 장지역 1번 출구에서 180m
+  tel: 02-443-8272
+  fax: 02-443-8273
+  email: fine21@hanmail.net
+
+nav:
+  - { key: about, label: 회사소개, url: /about.html }
+  - { key: products, label: 제품, url: /products/ }
+  - { key: cases, label: 납품사례, url: /cases/ }
+  - { key: process, label: 제작안내, url: /process.html }
+  - { key: faq, label: FAQ, url: /faq.html }
+
+# 제품 분류. 순서대로 탭이 만들어집니다.
+# (Pages CMS 글쓰기 화면의 선택지는 .pages.yml 에도 같이 적어 두어야 합니다.)
+categories:
+  - name: 안내판
+    summary: 종합안내판 · 주제원안내판 · 방향표지판 · 현판
+    subs: [종합안내판, 주제원안내판, 방향표지판, 현판, 기타]
+  - name: 식물라벨
+    summary: 우드라벨 · 알루미늄라벨 · 아크릴라벨
+    subs: [우드라벨, 알루미늄라벨, 아크릴라벨, 부속품, 기타]
+  - name: 상패·주문제작
+    summary: 원목 상패, 기념패, 그 밖의 맞춤 사인
+    subs: [상패, 주문제작]

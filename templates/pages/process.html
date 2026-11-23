@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}제작안내 | {% endblock %}
+{% block main %}
+<section class="page-head"><div class="inner">
+  <div class="crumb"><a href="{{ base }}/">홈</a> › 제작안내</div>
+  <h1>제작안내</h1>
+  <p>파인가든은 다음 단계를 거쳐 제품을 전해 드립니다. 자세한 사항은 연락 주시면 개별적으로 안내해 드립니다.</p>
+</div></section>
+
+<section class="section">
+  <div class="inner">
+    <span class="eyebrow">PROCESS</span>
+    <h2 class="sec-title" style="margin-bottom:40px">주문 · 제작 과정</h2>
+    {% include "_steps.html" %}
+  </div>
+</section>
+
+<section class="section paper">
+  <div class="inner">
+    <span class="eyebrow">CRAFT</span>
+    <h2 class="sec-title" style="margin-bottom:40px">나뭇결을 살리는 제작 방식</h2>
+    <div class="grid">
+      <div class="craft">
+        <div class="craft-img">작업 사진</div>
+        <h3>샌드블라스팅</h3>
+        <p>원목 표면에 고압을 견디는 필름을 붙이고 음각·양각으로 처리할 부분만 떼어 낸 뒤, 모래를 고압으로 쏘아 나뭇결과 나이테를 살려 파냅니다. 용도에 따라 방수·방충 처리해 실내외 모두 쓸 수 있습니다.</p>
+      </div>
+      <div class="craft">
+        <div class="craft-img">작업 사진</div>
+        <h3>세필 수작업 도색</h3>
+        <p>원목을 제재·건조하고 재단·샌딩한 뒤, 글자와 그림을 가는 붓으로 하나하나 칠하고 방수·방풍 처리합니다. 대부분 손으로 하는 작업이라 시간과 정성이 많이 들지만 그만큼 마감이 뛰어납니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,116 @@
+# Pages CMS 설정 — https://app.pagescms.org 에서 이 저장소를 열면 아래 메뉴가 글쓰기 화면에 나타납니다.
+# 업로드한 사진은 저장소에 올라간 뒤 GitHub Actions가 긴 변 1600px 이하로 자동으로 줄입니다.
+media:
+  - name: products
+    label: 제품 사진
+    input: uploads/products
+    output: /uploads/products
+    rename: safe
+    categories: [image]
+  - name: cases
+    label: 사례 사진
+    input: uploads/cases
+    output: /uploads/cases
+    rename: safe
+    categories: [image]
+
+content:
+  - name: products
+    label: 제품
+    type: collection
+    path: content/products
+    format: yaml-frontmatter
+    filename: "{year}{month}{day}-{hour}{minute}{second}.md"
+    view:
+      fields: [title, category, sub]
+      primary: title
+      sort: [title, category]
+      default:
+        sort: title
+        order: asc
+    fields:
+      - name: title
+        label: 제품명(코드)
+        type: string
+        required: true
+      - name: category
+        label: 대분류
+        type: select
+        required: true
+        options:
+          values: [안내판, 식물라벨, 상패·주문제작]
+      - name: sub
+        label: 세부 분류
+        type: select
+        required: true
+        options:
+          values: [종합안내판, 주제원안내판, 방향표지판, 현판, 우드라벨, 알루미늄라벨, 아크릴라벨, 부속품, 상패, 주문제작, 기타]
+      - name: image
+        label: 대표 사진
+        type: image
+        options:
+          media: products
+      - name: size
+        label: 크기
+        type: string
+        description: "예) 600 × 200 mm"
+      - name: material
+        label: 소재
+        type: string
+        description: "예) 방부목, 알루미늄"
+      - name: order
+        label: 정렬 순서(선택)
+        type: number
+        description: "숫자가 작을수록 앞에 나옵니다. 비워 두면 제품명 순서."
+      - name: draft
+        label: 숨기기
+        type: boolean
+        default: false
+      - name: body
+        label: 설명
+        type: rich-text
+        options:
+          format: html
+          media: products
+
+  - name: cases
+    label: 납품사례
+    type: collection
+    path: content/cases
+    format: yaml-frontmatter
+    filename: "{year}-{month}-{day}-{hour}{minute}{second}.md"
+    view:
+      fields: [title, date]
+      primary: title
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: 납품처
+        type: string
+        required: true
+      - name: client_type
+        label: 구분
+        type: select
+        options:
+          values: [식물원·수목원, 공공기관, 학교, 공원, 개인·기업, 기타]
+      - name: products
+        label: 납품 품목
+        type: string
+        description: "예) 종합안내판 2기, 우드라벨 300개"
+      - name: date
+        label: 납품일
+        type: date
+      - name: image
+        label: 대표 사진
+        type: image
+        options:
+          media: cases
+      - name: body
+        label: 내용
+        type: rich-text
+        options:
+          format: html
+          media: cases

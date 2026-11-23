@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}회사소개 | {% endblock %}
+{% block main %}
+<section class="page-head"><div class="inner">
+  <div class="crumb"><a href="{{ base }}/">홈</a> › 회사소개</div>
+  <h1>회사소개</h1>
+  <p>파인가든은 “가든사인 전문업체”입니다.</p>
+</div></section>
+
+<section class="section">
+  <div class="inner prose">
+    <h2>주변 환경에 꼭 맞는 사인</h2>
+    <p>광고와 안내문은 복잡한 사회 속에서 사람들의 길잡이가 되어 줍니다. 파인가든은 사인이 필요한 곳이라면 어디든, 주변 환경에 가장 잘 맞는 재질과 디자인으로 고객 만족을 실현하겠습니다.</p>
+    <p>나무와 꽃을 키우는 일에서 출발한 파인가든에는 수목보호 전문가, 식물분류 전문가, 디자인 전문가가 함께합니다. 식물조사(수종조사)부터 제품 디자인, 조경 설계·시공, 납품까지 모든 과정을 다룹니다.</p>
+  </div>
+</section>
+
+<section class="section dark">
+  <div class="inner">
+    <span class="eyebrow">OUR PROMISE</span>
+    <h2 class="sec-title">파인가든의 세 가지 약속</h2>
+    <div class="points">
+      <div class="point"><span class="num">01</span><h3>소비자를 생각하는 가격</h3><p>디자인과 생산을 한곳에서 하는 원스톱 체계로 중간 유통 마진과 제작 공정을 줄여 합리적인 가격을 제시합니다.</p></div>
+      <div class="point"><span class="num">02</span><h3>제품의 질과 디자인</h3><p>끊임없는 제품 개발과 직원들의 노력으로 차별화된 품질과 디자인을 만듭니다.</p></div>
+      <div class="point"><span class="num">03</span><h3>신뢰</h3><p>여러 조경 설계·시공·관리 경험과 개인, 식물원, 공공기관 납품 실적이 파인가든의 책임감을 보여 줍니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section paper">
+  <div class="inner contact-grid">
+    <div class="prose">
+      <h2>오시는 길</h2>
+      <p><strong>{{ site.company.address }}</strong><br />{{ site.company.directions }}, 오른쪽 방향에 파인가든이 있습니다.</p>
+      <p>전화 {{ site.company.tel }} · 팩스 {{ site.company.fax }}</p>
+      <p><a href="https://map.naver.com/p/search/{{ site.company.address|urlencode }}" rel="noopener">네이버 지도에서 보기 →</a></p>
+    </div>
+  </div>
+</section>
+{% endblock %}

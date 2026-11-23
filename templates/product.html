@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% from "_macros.html" import product_card, sign_icon %}
+{% block title %}{{ product.title }} | 제품 | {% endblock %}
+{% block description %}{{ product.title }} — {{ product.category }} {{ product.sub }} | {{ site.title }}{% endblock %}
+{% block main %}
+<section class="page-head"><div class="inner">
+  <div class="crumb"><a href="{{ base }}/">홈</a> › <a href="{{ base }}/products/">제품</a> › <a href="{{ base }}/products/?cat={{ product.category|urlencode }}">{{ product.category }}</a> › <a href="{{ base }}/products/?cat={{ product.category|urlencode }}&amp;sub={{ product.sub|urlencode }}">{{ product.sub }}</a></div>
+  <h1>{{ product.category|replace('·', ' · ') }}</h1>
+</div></section>
+
+<section class="section" style="padding-top:56px">
+  <div class="inner">
+    <div class="product-detail">
+      <div class="product-photo">
+        {% if product.image %}<img src="{{ product.image }}" alt="{{ product.title }} 제품 사진" />{% else %}<span class="noimg">{{ sign_icon(product.sub, product.category) }}사진 준비 중</span>{% endif %}
+      </div>
+      <div class="product-info">
+        <span class="tag">{{ product.sub }}</span>
+        <h2>{{ product.title }}</h2>
+        <table class="spec">
+          <tr><th scope="row">분류</th><td>{{ product.category }} › {{ product.sub }}</td></tr>
+          <tr><th scope="row">크기</th><td>{{ product.size or '현장에 맞춰 맞춤 제작' }}</td></tr>
+          {% if product.material %}<tr><th scope="row">소재</th><td>{{ product.material }}</td></tr>{% endif %}
+        </table>
+        {% if product.html %}<div class="desc">{{ product.html|safe }}</div>{% else %}<p class="desc">문구, 크기, 색상은 설치 장소에 맞춰 조정할 수 있습니다. 자세한 사양은 문의해 주세요.</p>{% endif %}
+        <div class="btns">
+          <a class="btn btn-primary" href="mailto:{{ site.company.email }}?subject={{ ('[견적문의] ' ~ product.title) | urlencode }}">이 제품으로 견적 문의</a>
+          <a class="btn btn-line" href="tel:{{ site.company.tel|replace('-', '') }}">{{ site.company.tel }}</a>
+        </div>
+      </div>
+    </div>
+    {% if related %}
+    <div class="related">
+      <h2>같은 분류의 제품</h2>
+      <div class="product-grid">{% for p in related %}{{ product_card(p) }}{% endfor %}</div>
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

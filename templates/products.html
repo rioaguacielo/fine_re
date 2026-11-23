@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% from "_macros.html" import product_card %}
+{% block title %}제품 | {% endblock %}
+{% block main %}
+<section class="page-head"><div class="inner">
+  <div class="crumb"><a href="{{ base }}/">홈</a> › 제품</div>
+  <h1>제품</h1>
+  <p>모든 제품은 설치 장소에 맞춰 크기·문구·디자인을 조정해 주문 제작합니다.</p>
+</div></section>
+
+<section class="section" style="padding-top:48px">
+  <div class="inner">
+    <div class="tabs" role="group" aria-label="제품 분류">
+      <button type="button" data-cat="" aria-pressed="true">전체</button>
+      {% for c in categories %}<button type="button" data-cat="{{ c.name }}" aria-pressed="false">{{ c.name|replace('·', ' · ') }}</button>{% endfor %}
+    </div>
+    <div class="filter-row">
+      {% for c in categories %}
+      <div class="chips" role="group" aria-label="{{ c.name }} 세부 분류" data-for="{{ c.name }}" hidden>
+        <button type="button" data-sub="" aria-pressed="true">전체</button>
+        {% for s in c.subs_used %}<button type="button" data-sub="{{ s }}" aria-pressed="false">{{ s }}</button>{% endfor %}
+      </div>
+      {% endfor %}
+      <span class="count" aria-live="polite">제품 <strong id="count">{{ products|length }}</strong>개</span>
+    </div>
+    <div class="product-grid" id="grid">
+      {% for p in products %}{{ product_card(p) }}{% endfor %}
+    </div>
+    <p class="empty" id="empty" hidden>이 분류에는 아직 등록된 제품이 없습니다.</p>
+
+    <div class="custom-box">
+      <div><h2>찾는 제품이 없으신가요?</h2><p>원하는 크기와 문구, 설치 장소를 알려 주시면 맞춤으로 제작해 드립니다.</p></div>
+      <a class="btn btn-primary" href="{{ base }}/contact.html">주문제작 문의하기</a>
+    </div>
+  </div>
+</section>
+{% endblock %}
+{% block scripts %}
+<script>
+(() => {
+  const cards = [...document.querySelectorAll('#grid .card')];
+  const tabs = [...document.querySelectorAll('.tabs button')];
+  const chipGroups = [...document.querySelectorAll('.chips')];
+  let cat = '', sub = '';
+  function apply(push) {
+    tabs.forEach(b => b.setAttribute('aria-pressed', b.dataset.cat === cat));
+    chipGroups.forEach(g => {
+      g.hidden = g.dataset.for !== cat;
+      g.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', b.dataset.sub === sub));
+    });
+    let n = 0;
+    cards.forEach(c => {
+      const show = (!cat || c.dataset.cat === cat) && (!sub || c.dataset.sub === sub);
+      c.hidden = !show; if (show) n++;
+    });
+    document.getElementById('count').textContent = n;
+    document.getElementById('empty').hidden = n > 0;
+    if (push) {
+      const q = new URLSearchParams(); if (cat) q.set('cat', cat); if (sub) q.set('sub', sub);
+      history.replaceState(null, '', location.pathname + (q.toString() ? '?' + q : ''));
+    }
+  }
+  tabs.forEach(b => b.addEventListener('click', () => { cat = b.dataset.cat; sub = ''; apply(true); }));
+  chipGroups.forEach(g => g.querySelectorAll('button').forEach(b => b.addEventListener('click', () => { sub = b.dataset.sub; apply(true); })));
+  const q = new URLSearchParams(location.search);
+  cat = q.get('cat') || ''; sub = q.get('sub') || '';
+  if (!tabs.some(b => b.dataset.cat === cat)) { cat = ''; sub = ''; }
+  apply(false);
+})();
+</script>
+{% endblock %}

@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "_macros.html" import product_card, sign_icon %}
+{% from "_macros.html" import product_card, sign_icon, quote_form_url with context %}
 {% block title %}{{ product.title }} | 제품 | {% endblock %}
 {% block description %}{{ product.title }} — {{ product.category }} {{ product.sub }} | {{ site.title }}{% endblock %}
 {% block main %}
@@ -24,7 +24,9 @@
         </table>
         {% if product.html %}<div class="desc">{{ product.html|safe }}</div>{% else %}<p class="desc">문구, 크기, 색상은 설치 장소에 맞춰 조정할 수 있습니다. 자세한 사양은 문의해 주세요.</p>{% endif %}
         <div class="btns">
-          <a class="btn btn-primary" href="mailto:{{ site.company.email }}?subject={{ ('[견적문의] ' ~ product.title) | urlencode }}">이 제품으로 견적 문의</a>
+          {% set form_url = quote_form_url(product.title)|trim %}
+          {% if form_url %}<a class="btn btn-primary" href="{{ form_url }}" target="_blank" rel="noopener">이 제품으로 견적 문의</a>
+          {% else %}<a class="btn btn-primary" href="mailto:{{ site.company.email }}?subject={{ ('[견적문의] ' ~ product.title) | urlencode }}">이 제품으로 견적 문의</a>{% endif %}
           <a class="btn btn-line" href="tel:{{ site.company.tel|replace('-', '') }}">{{ site.company.tel }}</a>
         </div>
       </div>

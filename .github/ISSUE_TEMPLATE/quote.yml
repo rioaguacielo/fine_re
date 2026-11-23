@@ -1,0 +1,46 @@
+name: 견적 문의
+description: 제작·납품 견적을 요청합니다.
+title: "[견적문의] "
+labels: [견적문의]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        설치 장소와 대략적인 크기·수량만 알려 주셔도 상담해 드립니다.
+        ⚠️ 이 글은 공개될 수 있으니, 연락처를 남기기 꺼려지시면 전화(02-443-8272)나 이메일(fine21@hanmail.net)로 문의해 주세요.
+  - type: input
+    id: name
+    attributes:
+      label: 이름 / 업체명
+    validations:
+      required: true
+  - type: input
+    id: contact
+    attributes:
+      label: 연락처 (전화 또는 이메일)
+    validations:
+      required: true
+  - type: input
+    id: product
+    attributes:
+      label: 원하는 제품
+      placeholder: 예) 종합안내판, 우드라벨
+    validations:
+      required: true
+  - type: textarea
+    id: place
+    attributes:
+      label: 설치 장소와 용도
+  - type: input
+    id: size
+    attributes:
+      label: 대략적인 크기와 수량
+      placeholder: 예) 600 × 200 mm, 30개
+  - type: input
+    id: due
+    attributes:
+      label: 희망 납기일
+  - type: textarea
+    id: etc
+    attributes:
+      label: 기타 요청 사항

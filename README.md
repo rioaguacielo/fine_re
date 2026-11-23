@@ -36,3 +36,14 @@
 
 - 저장소 **Settings → Pages → Build and deployment → Source** 를 **GitHub Actions** 로 바꿉니다.
 - 자체 도메인으로 옮길 때는 `site.yml` 의 `baseurl` 을 `""` 로, `draft` 를 `false` 로 바꿉니다.
+
+## 견적 문의 폼 바꾸기
+
+`site.yml` 의 `quote_form.provider` 로 고릅니다. 주소가 비어 있으면 이메일 안내만 나옵니다.
+
+- **구글폼**: `provider: google` 로 두고 구글폼 **보내기 → 링크** 주소(`…/viewform`)를 `google.url` 에 넣습니다.
+  - `embed: true` 면 견적문의 페이지 안에 폼이 바로 보입니다.
+  - 제품 페이지에서 제품명을 자동으로 채우려면 구글폼 **⋮ → 미리 채워진 링크 받기**로 만든 링크의 `entry.숫자` 를 `product_entry` 에 넣습니다.
+- **GitHub 이슈 폼**: `provider: github`. 질문 항목은 `.github/ISSUE_TEMPLATE/quote.yml` 에서 고칩니다.
+  - 고객에게 GitHub 계정이 필요하고, 공개 저장소면 문의 내용이 **공개**됩니다.
+  - 문의에 `견적문의` 라벨을 붙이려면 저장소 **Issues → Labels** 에서 같은 이름의 라벨을 먼저 만들어 둡니다.

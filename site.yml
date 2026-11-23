@@ -16,6 +16,22 @@ company:
   fax: 02-443-8273
   email: fine21@hanmail.net
 
+# 견적 문의 폼 — 'google', 'github', 'email' 중 하나를 고릅니다.
+#  google : 구글폼. 아래 google.url 에 폼 주소(…/viewform)를 넣습니다.
+#  github : 저장소의 이슈 폼(.github/ISSUE_TEMPLATE/quote.yml). 고객에게 GitHub 계정이 필요하고,
+#           공개 저장소라면 문의 내용(연락처 포함)이 공개됩니다.
+#  email  : 폼 없이 이메일·전화만 안내
+# 주소가 비어 있으면 자동으로 email 방식으로 표시됩니다.
+quote_form:
+  provider: google
+  google:
+    url: ""            # 예) https://docs.google.com/forms/d/e/XXXX/viewform
+    embed: true        # true 면 견적문의 페이지 안에 폼을 바로 보여 줌
+    product_entry: ""  # (선택) 제품명 칸 자동 입력용. 예) entry.123456789
+  github:
+    repo: rioaguacielo/fine_re
+    template: quote.yml
+
 # 첫 화면 사진 모자이크에 쓸 제품 (content/products 의 파일 이름, 5개)
 # 첫 번째가 가장 크게 나옵니다. 사진을 누르면 그 제품 페이지로 이동합니다.
 hero_products: [is-5, ts-3, fg-os-5, fg-wl-16, fg-ala-5]

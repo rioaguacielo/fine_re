@@ -17,3 +17,13 @@
   </div>
 </a>
 {%- endmacro %}
+
+{# 견적 문의 폼 주소. 설정된 폼이 없으면 빈 문자열 #}
+{% macro quote_form_url(product=None) -%}
+{%- set q = site.quote_form or {} -%}
+{%- if q.provider == 'google' and q.google and q.google.url -%}
+{{ q.google.url }}{% if product and q.google.product_entry %}{{ '&' if '?' in q.google.url else '?' }}usp=pp_url&{{ q.google.product_entry }}={{ product|urlencode }}{% endif %}
+{%- elif q.provider == 'github' and q.github and q.github.repo -%}
+https://github.com/{{ q.github.repo }}/issues/new?template={{ q.github.template or 'quote.yml' }}{% if product %}&title={{ ('[견적문의] ' ~ product)|urlencode }}&product={{ product|urlencode }}{% endif %}
+{%- endif -%}
+{%- endmacro %}

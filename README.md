@@ -27,6 +27,7 @@
 | `css/`, `images/` | 스타일과 고정 이미지 |
 | `scripts/build.py` | 파일로 사이트를 만드는 프로그램 |
 | `scripts/resize_images.py` | 큰 사진 자동 축소 |
+| `scripts/google_form.gs` | 견적 문의 구글폼을 만드는 스크립트 (script.google.com 에서 한 번 실행) |
 | `scripts/migrate_images.py` | 기존 사이트의 제품 사진을 한 번 옮겨 오기 (`old_image:` 가 남은 제품만) |
 | `data/old_products.tsv` | 기존 사이트에서 가져온 제품 목록 원본 |
 | `.pages.yml` | 글쓰기 화면(Pages CMS) 설정 |

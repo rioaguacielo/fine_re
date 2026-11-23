@@ -4,6 +4,5 @@ category: 안내판
 sub: 종합안내판
 size: ""
 material: ""
-image: ""
-old_image: "2015/04/IS-6-1500-1700-200.jpg"
+image: "/uploads/products/is-6.jpg"
 ---

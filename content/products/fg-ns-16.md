@@ -4,6 +4,5 @@ category: 안내판
 sub: 현판
 size: ""
 material: ""
-image: ""
-old_image: "2015/02/NS-16-420-320.jpg"
+image: "/uploads/products/fg-ns-16.jpg"
 ---

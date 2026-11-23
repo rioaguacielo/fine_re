@@ -4,6 +4,5 @@ category: 식물라벨
 sub: 알루미늄라벨
 size: ""
 material: ""
-image: ""
-old_image: "2019/09/ARA7지지대형.jpg"
+image: "/uploads/products/fg-ala-7.jpg"
 ---

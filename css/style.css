@@ -165,7 +165,7 @@ a.card:hover h3 { text-decoration: underline; }
 .count strong { color: var(--forest-dark); }
 .product-grid { display: grid; gap: 24px; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
 .product-grid .card-img { height: 240px; background: #fff; }
-.product-grid .card-img img { object-fit: contain; }
+.product-grid .card-img img { object-fit: cover; object-position: center; }
 .product-grid .card-body { padding: 16px 18px 18px; gap: 4px; }
 .product-grid .card-body h3 { font-size: 19px; }
 .product-grid .size { font-size: 14px; color: var(--muted); }
@@ -177,7 +177,8 @@ a.card:hover h3 { text-decoration: underline; }
 
 /* 제품 상세 */
 .product-detail { display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start; }
-.product-photo { flex: 1 1 480px; min-width: 0; background: #fff; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 360px; }
+.product-photo { flex: 1 1 480px; min-width: 0; background: var(--sand); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 360px; }
+.product-photo img { width: 100%; height: auto; }
 .product-info { flex: 1 1 360px; min-width: 0; }
 .product-info h2 { margin: 6px 0 20px; font-family: var(--serif); font-size: 34px; color: var(--forest-dark); }
 .spec { width: 100%; border-collapse: collapse; margin-bottom: 24px; }

@@ -16,6 +16,10 @@ company:
   fax: 02-443-8273
   email: fine21@hanmail.net
 
+# 첫 화면 사진 모자이크에 쓸 제품 (content/products 의 파일 이름, 5개)
+# 첫 번째가 가장 크게 나옵니다. 사진을 누르면 그 제품 페이지로 이동합니다.
+hero_products: [is-5, ts-3, fg-os-5, fg-wl-16, fg-ala-5]
+
 nav:
   - { key: about, label: 회사소개, url: /about.html }
   - { key: products, label: 제품, url: /products/ }

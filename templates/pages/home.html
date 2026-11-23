@@ -11,30 +11,28 @@
         <a class="btn btn-primary" href="{{ base }}/contact.html">견적 문의하기</a>
         <a class="btn btn-line" href="{{ base }}/products/">제품 둘러보기</a>
       </div>
+      <p class="hero-links">{% for c in categories %}<a href="{{ base }}/products/?cat={{ c.name|urlencode }}">{{ c.name }}</a>{% endfor %}</p>
     </div>
     <div class="hero-art">
-      <svg viewBox="0 0 520 440" role="img" aria-label="숲속 정원에 세워진 나무 안내판 그림">
-        <ellipse cx="260" cy="404" rx="240" ry="26" fill="#D9CBB1"/>
-        <path d="M40 400 C60 330 90 320 110 400 Z" fill="#5E7F57"/>
-        <path d="M70 402 C95 300 140 300 150 402 Z" fill="#3F6247"/>
-        <path d="M400 402 C410 320 450 300 470 402 Z" fill="#3F6247"/>
-        <path d="M430 404 C450 350 490 350 500 404 Z" fill="#5E7F57"/>
-        <rect x="150" y="190" width="22" height="215" rx="3" fill="#7A4E2D"/>
-        <rect x="348" y="190" width="22" height="215" rx="3" fill="#7A4E2D"/>
-        <rect x="110" y="80" width="300" height="190" rx="10" fill="#A9744F"/>
-        <rect x="122" y="92" width="276" height="166" rx="6" fill="#C08A5F"/>
-        <path d="M130 120 C200 112 300 128 390 118" stroke="#A9744F" stroke-width="2" fill="none"/>
-        <path d="M130 228 C210 236 300 220 390 230" stroke="#A9744F" stroke-width="2" fill="none"/>
-        <text x="260" y="168" text-anchor="middle" font-family="Gowun Batang, serif" font-size="36" font-weight="700" fill="#4A2E18">숲속정원</text>
-        <text x="260" y="206" text-anchor="middle" font-family="Noto Sans KR, sans-serif" font-size="16" fill="#4A2E18">FOREST GARDEN</text>
-        <rect x="300" y="330" width="8" height="74" fill="#7A4E2D"/>
-        <rect x="262" y="300" width="84" height="40" rx="4" fill="#E7DAC4"/>
-        <text x="304" y="325" text-anchor="middle" font-family="Gowun Batang, serif" font-size="15" font-weight="700" fill="#2E4636">산수유</text>
-        <path d="M200 404 C205 360 225 350 230 404 Z" fill="#7FA06F"/>
-        <circle cx="440" cy="300" r="7" fill="#E8762C"/>
-        <circle cx="96" cy="330" r="6" fill="#E8762C"/>
-      </svg>
+      <div class="hero-mosaic">
+        {% for p in hero %}
+        <a class="m m{{ loop.index }}" href="{{ p.url }}"><img src="{{ p.image }}" alt="{{ p.sub }} {{ p.title }} 시공 사진" {% if loop.first %}fetchpriority="high"{% else %}loading="lazy"{% endif %} /></a>
+        {% endfor %}
+        <div class="hero-badge" aria-hidden="true">
+          <span class="badge-mark">✓</span>
+          <span><b>디자인 · 제작 · 시공</b>한곳에서 책임집니다</span>
+        </div>
+      </div>
     </div>
+  </div>
+</section>
+
+<section class="trust" aria-label="파인가든 한눈에 보기">
+  <div class="inner">
+    <div class="trust-item"><b>{{ products|length }}<small>종</small></b><span>안내판 · 식물라벨 제품</span></div>
+    <div class="trust-item"><b>7~15<small>일</small></b><span>디자인 확정 후 제작 기간</span></div>
+    <div class="trust-item"><b>수종조사</b><span>식물 이름을 몰라도 시작할 수 있어요</span></div>
+    <div class="trust-item"><b>원스톱</b><span>상담부터 납품 · 시공까지</span></div>
   </div>
 </section>
 

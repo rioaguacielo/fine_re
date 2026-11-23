@@ -88,8 +88,46 @@ h1, h2, h3 { line-height: 1.3; }
 .hero h1 { margin: 12px 0 24px; font-family: var(--serif); font-size: clamp(34px, 5vw, 52px); line-height: 1.25; color: var(--forest-dark); }
 .hero p { margin: 0 0 32px; font-size: 19px; color: var(--text); max-width: 520px; }
 .hero .btns { display: flex; flex-wrap: wrap; gap: 12px; }
-.hero-art { flex: 1 1 440px; min-width: 0; display: flex; justify-content: center; }
-.hero-art svg { width: 100%; max-width: 540px; height: auto; }
+.hero { background: var(--cream); overflow: hidden; }
+.hero .inner { padding-top: 72px; padding-bottom: 88px; }
+.hero-links { margin: 24px 0 0 !important; font-size: 15px !important; display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.hero-links a { color: var(--wood); font-weight: 700; text-decoration: none; border-bottom: 1px solid #D9C3A5; padding-bottom: 2px; }
+.hero-links a:hover { color: var(--forest-dark); border-color: var(--forest-dark); }
+.hero-art { flex: 1.15 1 480px; min-width: 0; }
+.hero-mosaic { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: 1fr 1fr 0.9fr; gap: 12px; height: 540px; }
+.hero-mosaic::before { content: ""; position: absolute; inset: 40px -60px -40px 60px; background: var(--forest); border-radius: 24px; z-index: 0; }
+.hero-mosaic .m { position: relative; z-index: 1; border-radius: 14px; overflow: hidden; background: var(--sand); box-shadow: 0 10px 30px rgba(31, 49, 38, .18); }
+.hero-mosaic .m img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+.hero-mosaic .m:hover img { transform: scale(1.05); }
+.hero-mosaic .m1 { grid-column: 1 / 3; grid-row: 1 / 3; }
+.hero-mosaic .m2 { grid-column: 3; grid-row: 1; }
+.hero-mosaic .m3 { grid-column: 3; grid-row: 2; }
+.hero-mosaic .m4 { grid-column: 1; grid-row: 3; }
+.hero-mosaic .m5 { grid-column: 2 / 4; grid-row: 3; }
+.hero-badge { position: absolute; z-index: 2; left: -28px; bottom: 34%; display: flex; align-items: center; gap: 12px; background: var(--paper); border-radius: 12px; padding: 14px 18px; box-shadow: 0 12px 32px rgba(31, 49, 38, .2); font-size: 14px; color: var(--muted); }
+.hero-badge b { display: block; color: var(--forest-dark); font-size: 16px; }
+.badge-mark { width: 36px; height: 36px; border-radius: 50%; background: var(--logo-orange); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; flex: none; }
+@media (max-width: 960px) {
+  .hero-mosaic { height: 440px; }
+  .hero-mosaic::before { inset: 30px -24px -24px 30px; }
+  .hero-badge { left: 12px; bottom: 12px; }
+}
+@media (max-width: 560px) {
+  .hero-mosaic { height: 360px; gap: 8px; }
+}
+
+/* 신뢰 지표 띠 */
+.trust { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.trust .inner { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+.trust-item { padding: 28px 24px; display: flex; flex-direction: column; gap: 4px; border-left: 1px solid var(--line); }
+.trust-item:first-child { border-left: none; padding-left: 0; }
+.trust-item b { font-family: var(--serif); font-size: 30px; color: var(--forest-dark); line-height: 1.2; }
+.trust-item b small { font-size: 18px; margin-left: 2px; }
+.trust-item span { font-size: 15px; color: var(--muted); }
+@media (max-width: 860px) {
+  .trust-item { border-left: none; border-top: 1px solid var(--line); padding-left: 0; }
+  .trust-item:first-child { border-top: none; }
+}
 
 /* 카드 */
 .card { background: var(--cream); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; text-decoration: none; color: var(--ink); }

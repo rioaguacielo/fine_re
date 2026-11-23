@@ -160,7 +160,12 @@ def main():
         cover = next((p["image"] for p in in_cat if p["image"]), None)
         categories.append({**c, "count": len(in_cat), "subs_used": subs, "cover": cover})
 
-    common = {"site": site, "base": base, "build_id": build_id, "categories": categories,
+    by_slug = {p["slug"]: p for p in products}
+    hero = [by_slug[s] for s in site.get("hero_products") or [] if s in by_slug and by_slug[s]["image"]]
+    if len(hero) < 5:
+        hero += [p for p in products if p["image"] and p not in hero][: 5 - len(hero)]
+
+    common = {"site": site, "hero": hero, "base": base, "build_id": build_id, "categories": categories,
               "products": products, "cases": cases, "year": dt.datetime.now(KST).year}
 
     if OUT.exists():

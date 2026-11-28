@@ -5,7 +5,7 @@
 <section class="page-head"><div class="inner">
   <div class="crumb"><a href="{{ base }}/">홈</a> › 견적문의</div>
   <h1>견적문의</h1>
-  <p>제작 의뢰와 각종 문의는 전화나 이메일로 연락 주세요.</p>
+  <p>아래 양식으로 문의를 남겨 주시거나 전화로 연락 주세요.</p>
 </div></section>
 
 <section class="section">
@@ -20,17 +20,54 @@
       </dl>
     </div>
     <div class="contact-card">
-      <h2>이메일로 견적 요청하기</h2>
-      <p style="margin:0 0 12px;color:var(--text)">아래 내용을 적어 보내 주시면 빠르게 견적을 드립니다.</p>
-      <ul class="checklist">
-        <li>이름 / 업체명, 연락처</li>
-        <li>원하는 제품 (예: 종합안내판, 우드라벨)</li>
-        <li>설치 장소와 용도</li>
-        <li>대략적인 크기와 수량</li>
-        <li>희망 납기일</li>
-      </ul>
-      <a class="btn btn-primary" href="mailto:{{ site.company.email }}?subject={{ '[견적문의] ' | urlencode }}&body={{ '이름/업체명:\n연락처:\n원하는 제품:\n설치 장소·용도:\n크기·수량:\n희망 납기일:\n' | urlencode }}">이메일 작성하기</a>
+      <h2>온라인 견적 문의</h2>
+      <p style="margin:0 0 20px;color:var(--text)">남겨 주신 내용을 확인한 뒤 연락드리겠습니다.</p>
+      <form class="inquiry" id="inquiry" action="{{ site.form_action }}" method="POST">
+        <input type="hidden" name="site" value="{{ site.form_site }}" />
+        <input type="text" name="website" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true" />
+        <div class="f-row">
+          <label>성함 · 업체명 <span class="req">*</span><input name="name" required autocomplete="name" /></label>
+          <label>연락처 또는 이메일 <span class="req">*</span><input name="contact" required autocomplete="tel" /></label>
+        </div>
+        <label>문의 제품
+          <select name="type" id="f-type">
+            {% for c in categories %}<option>{{ c.name }}</option>{% endfor %}
+            <option>기타 · 잘 모르겠어요</option>
+          </select>
+        </label>
+        <label>문의 내용 <span class="req">*</span>
+          <textarea name="message" id="f-message" rows="7" required placeholder="설치 장소와 용도, 대략적인 크기와 수량, 희망 납기일을 적어 주시면 더 정확히 안내해 드립니다."></textarea>
+        </label>
+        <button type="submit" class="btn btn-primary">문의 보내기</button>
+        <p class="f-status" id="f-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
     </div>
   </div>
 </section>
+{% endblock %}
+{% block scripts %}
+<script>
+(() => {
+  const f = document.getElementById('inquiry'), st = document.getElementById('f-status');
+  const q = new URLSearchParams(location.search);
+  if (q.get('product')) {
+    const t = document.getElementById('f-type');
+    if (q.get('cat')) [...t.options].forEach(o => { if (o.text === q.get('cat')) o.selected = true; });
+    document.getElementById('f-message').value = '[' + q.get('product') + '] 제품 문의\n\n';
+  }
+  f.addEventListener('submit', async e => {
+    e.preventDefault();
+    const btn = f.querySelector('button'); btn.disabled = true; st.className = 'f-status'; st.textContent = '보내는 중입니다…';
+    try {
+      const r = await fetch(f.action, { method: 'POST', body: new URLSearchParams(new FormData(f)) });
+      const d = await r.json();
+      if (!d.ok) throw new Error();
+      f.reset(); st.className = 'f-status ok'; st.textContent = '문의가 접수되었습니다. 확인 후 연락드리겠습니다.';
+    } catch (err) {
+      st.className = 'f-status err'; st.textContent = '전송에 실패했습니다. 잠시 후 다시 시도하시거나 {{ site.company.tel }}로 전화 주세요.';
+    } finally { btn.disabled = false; }
+  });
+})();
+</script>
 {% endblock %}

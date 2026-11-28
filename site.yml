@@ -20,6 +20,11 @@ company:
 # 첫 번째가 가장 크게 나옵니다. 사진을 누르면 그 제품 페이지로 이동합니다.
 hero_products: [is-5, ts-3, fg-os-5, fg-wl-16, fg-ala-5]
 
+# 문의 양식 접수 주소 (구글 Apps Script '홈페이지 문의 접수' → 구글 시트 저장 + 메일 알림)
+# 화인회·OmniCanvas 사이트와 같은 주소를 쓰고, form_site 값으로 어느 사이트 문의인지 구분합니다.
+form_action: https://script.google.com/macros/s/AKfycbzSGkYzuGvQp_G6xVHZZHuydilduFrVXoZ3H0_-JMAJZCFAsgzDZS4NiYXvOauJ6zCG/exec
+form_site: 파인가든
+
 nav:
   - { key: about, label: 회사소개, url: /about.html }
   - { key: products, label: 제품, url: /products/ }

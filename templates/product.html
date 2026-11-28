@@ -24,7 +24,7 @@
         </table>
         {% if product.html %}<div class="desc">{{ product.html|safe }}</div>{% else %}<p class="desc">문구, 크기, 색상은 설치 장소에 맞춰 조정할 수 있습니다. 자세한 사양은 문의해 주세요.</p>{% endif %}
         <div class="btns">
-          <a class="btn btn-primary" href="mailto:{{ site.company.email }}?subject={{ ('[견적문의] ' ~ product.title) | urlencode }}">이 제품으로 견적 문의</a>
+          <a class="btn btn-primary" href="{{ base }}/contact.html?product={{ product.title|urlencode }}&amp;cat={{ product.category|urlencode }}">이 제품으로 견적 문의</a>
           <a class="btn btn-line" href="tel:{{ site.company.tel|replace('-', '') }}">{{ site.company.tel }}</a>
         </div>
       </div>

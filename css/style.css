@@ -252,3 +252,19 @@ a.card:hover h3 { text-decoration: underline; }
   .sec-title { font-size: 30px; }
   .page-head h1 { font-size: 34px; }
 }
+
+/* 문의 양식 */
+.inquiry { display: flex; flex-direction: column; gap: 16px; }
+.inquiry label { display: flex; flex-direction: column; gap: 6px; font-size: 15px; font-weight: 600; color: var(--ink); }
+.inquiry .req { color: var(--orange); }
+.inquiry input, .inquiry select, .inquiry textarea { font: inherit; font-weight: 400; font-size: 16px; padding: 12px 14px; border: 1px solid #CDBFA6; border-radius: 8px; background: #fff; color: var(--ink); width: 100%; }
+.inquiry input:focus, .inquiry select:focus, .inquiry textarea:focus { outline: none; border-color: var(--forest); box-shadow: 0 0 0 3px rgba(46, 70, 54, .15); }
+.inquiry textarea { resize: vertical; min-height: 150px; }
+.inquiry .btn { align-self: flex-start; border: none; cursor: pointer; }
+.inquiry .btn:disabled { opacity: .6; cursor: wait; }
+.f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 600px) { .f-row { grid-template-columns: 1fr; } }
+.f-status { margin: 0; font-size: 15px; min-height: 1.5em; }
+.f-status.ok { color: var(--forest); font-weight: 700; }
+.f-status.err { color: #A3341C; font-weight: 600; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }

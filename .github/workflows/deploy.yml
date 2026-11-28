@@ -35,15 +35,18 @@ jobs:
       - name: 기존 사이트 제품 사진 옮기기 (남은 것만)
         run: python scripts/migrate_images.py
 
+      - name: 기존 로고 가져오기 (처음 한 번)
+        run: python scripts/fetch_logo.py
+
       - name: 큰 이미지 자동 축소
         run: python scripts/resize_images.py uploads
 
       - name: 바뀐 사진·제품 파일 저장소에 저장
         run: |
-          if [ -n "$(git status --porcelain uploads content)" ]; then
+          if [ -n "$(git status --porcelain uploads content images)" ]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add uploads content
+            git add uploads content images
             git commit -m "사진 옮기기·자동 축소"
             git pull --rebase origin main
             git push origin HEAD:main

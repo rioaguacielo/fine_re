@@ -29,10 +29,32 @@
 
 <section class="trust" aria-label="파인가든 한눈에 보기">
   <div class="inner">
-    <div class="trust-item"><b>{{ products|length }}<small>종</small></b><span>안내판 · 식물라벨 제품</span></div>
-    <div class="trust-item"><b>7~15<small>일</small></b><span>디자인 확정 후 제작 기간</span></div>
-    <div class="trust-item"><b>수종조사</b><span>식물 이름을 몰라도 시작할 수 있어요</span></div>
-    <div class="trust-item"><b>원스톱</b><span>상담부터 납품 · 시공까지</span></div>
+    <div class="trust-grid">
+      <a class="trust-card" href="{{ base }}/products/">
+        <span class="t-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>
+        <span class="t-label">보유 제품</span>
+        <b class="t-num">{{ products|length }}<small>종</small></b>
+        <span class="t-desc">안내판 · 식물라벨 · 상패까지 한눈에</span>
+      </a>
+      <a class="trust-card" href="{{ base }}/process.html">
+        <span class="t-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="M9 15l2 2 4-4"/></svg></span>
+        <span class="t-label">제작 기간</span>
+        <b class="t-num">7~15<small>일</small></b>
+        <span class="t-desc">디자인 확정 후, 소재에 따라</span>
+      </a>
+      <a class="trust-card" href="{{ base }}/faq.html">
+        <span class="t-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 19c0-8 5-14 15-15-1 10-7 15-15 15z"/><path d="M5 19c3-4 6-7 10-10"/></svg></span>
+        <span class="t-label">식물 전문가</span>
+        <b class="t-num">수종조사</b>
+        <span class="t-desc">식물 이름을 몰라도 시작할 수 있어요</span>
+      </a>
+      <a class="trust-card" href="{{ base }}/about.html">
+        <span class="t-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="6" r="2.5"/><path d="M8.5 18H15a3.5 3.5 0 0 0 0-7H9a3.5 3.5 0 0 1 0-7h6.5"/></svg></span>
+        <span class="t-label">진행 방식</span>
+        <b class="t-num">원스톱</b>
+        <span class="t-desc">상담 · 디자인 · 제작 · 시공을 한곳에서</span>
+      </a>
+    </div>
   </div>
 </section>
 

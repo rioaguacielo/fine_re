@@ -165,7 +165,7 @@ def main():
     if len(hero) < 5:
         hero += [p for p in products if p["image"] and p not in hero][: 5 - len(hero)]
 
-    common = {"site": site, "hero": hero, "base": base, "build_id": build_id, "categories": categories,
+    common = {"site": site, "hero": hero, "has_logo": (ROOT / "images" / "logo.png").exists(), "base": base, "build_id": build_id, "categories": categories,
               "products": products, "cases": cases, "year": dt.datetime.now(KST).year}
 
     if OUT.exists():

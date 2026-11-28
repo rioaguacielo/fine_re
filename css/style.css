@@ -43,8 +43,8 @@ h1, h2, h3 { line-height: 1.3; font-weight: 700; letter-spacing: -0.035em; }
 /* 헤더 */
 .site-header { background: var(--paper); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 50; }
 .site-header { background: #fff; }
-.site-header .inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 12px; padding-bottom: 12px; min-height: 88px; }
-.logo-img { height: 64px; width: auto; }
+.site-header .inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 10px; padding-bottom: 10px; min-height: 96px; }
+.logo-img { height: 76px; width: auto; }
 @media (max-width: 600px) { .logo-img { height: 50px; } .site-header .inner { min-height: 72px; } }
 .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
 .logo-mark { width: 60px; height: 60px; border-radius: 50%; background: var(--logo-orange); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 30px; font-style: italic; font-weight: 700; }
